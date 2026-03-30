@@ -20,14 +20,14 @@ Tech Stack:
 
 Prerequisites:
 - Install Java 21
-- Install Maven
 
 Check installation:
 java -version
-mvn -version
+
+Note:
+Maven is not required. This project uses Maven Wrapper.
 
 Project Setup:
-
 1. Clone the repository:
 git clone <your-repo-url>
 cd demo
@@ -64,6 +64,7 @@ Authentication Flow:
 1. Sign Up:
 POST /auth/signup
 
+Example
 Body:
 {
   "name": "Chakreesh",

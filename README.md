@@ -1,7 +1,5 @@
 Habit Tracker API
 
-This is a Spring Boot backend application for tracking habits.
-
 Features:
 - JWT-based authentication
 - User-specific habits

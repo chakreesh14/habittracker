@@ -45,8 +45,11 @@ server.port=8080
 
 Run the Application:
 
-mvn clean install
-mvn spring-boot:run
+Windows:
+mvnw.cmd spring-boot:run
+
+Mac/Linux:
+./mvnw spring-boot:run
 
 Application runs at:
 http://localhost:8080

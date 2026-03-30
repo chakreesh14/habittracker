@@ -32,7 +32,7 @@ Project Setup:
 git clone <your-repo-url>
 cd demo
 
-2. Configure application.properties:
+(Optional) 2. Configure application.properties:
 Path: src/main/resources/application.properties
 
 Add:

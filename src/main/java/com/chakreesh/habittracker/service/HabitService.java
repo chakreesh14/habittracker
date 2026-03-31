@@ -61,10 +61,10 @@ public class HabitService {
 
         long minutes = java.time.Duration.between(lastLoggedTime, now).toMinutes();
 
-        if (minutes < 10) {
-            long remaining = 10 - minutes;
-            return " You can log again after " + remaining + " minutes";
-        }
+        if (minutes < logIntervalMinutes) {
+                long remaining = logIntervalMinutes - minutes;
+                return "❌ Try again after " + remaining + " minutes";
+            }
     }
 
     HabitLog log = new HabitLog();

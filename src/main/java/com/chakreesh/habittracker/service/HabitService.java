@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class HabitService {
@@ -45,19 +45,36 @@ public class HabitService {
     }
 
     public String logHabit(Long habitId) {
-        User currentUser = authenticatedUserService.getCurrentUser();
 
-        Habit habit = habitRepository.findByIdAndUserId(habitId, currentUser.getId())
-                .orElseThrow(() -> new RuntimeException("Habit not found for this user"));
+    User currentUser = authenticatedUserService.getCurrentUser();
 
-        HabitLog log = new HabitLog();
-        log.setHabit(habit);
-        log.setLoggedAt(LocalDateTime.now());
+    Habit habit = habitRepository.findByIdAndUserId(habitId, currentUser.getId())
+            .orElseThrow(() -> new RuntimeException("Habit not found for this user"));
 
-        habitLogRepository.save(log);
+    Optional<HabitLog> lastLogOpt =
+            habitLogRepository.findTopByHabitOrderByLoggedAtDesc(habit);
 
-        return currentUser.getName() + ", habit logged successfully at " + log.getLoggedAt();
+    LocalDateTime now = LocalDateTime.now();
+
+    if (lastLogOpt.isPresent()) {
+        LocalDateTime lastLoggedTime = lastLogOpt.get().getLoggedAt();
+
+        long minutes = java.time.Duration.between(lastLoggedTime, now).toMinutes();
+
+        if (minutes < 10) {
+            long remaining = 10 - minutes;
+            return " You can log again after " + remaining + " minutes";
+        }
     }
+
+    HabitLog log = new HabitLog();
+    log.setHabit(habit);
+    log.setLoggedAt(now);
+
+    habitLogRepository.save(log);
+
+    return currentUser.getName() + ", habit logged successfully at " + now;
+}
 
     public List<Habit> getMyHabits() {
         User currentUser = authenticatedUserService.getCurrentUser();

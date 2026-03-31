@@ -6,6 +6,7 @@ import com.chakreesh.habittracker.entity.User;
 import com.chakreesh.habittracker.repository.HabitLogRepository;
 import com.chakreesh.habittracker.repository.HabitRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.time.Duration;
 import java.time.LocalDate;

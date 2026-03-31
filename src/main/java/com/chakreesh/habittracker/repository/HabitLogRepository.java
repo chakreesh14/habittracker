@@ -1,5 +1,6 @@
 package com.chakreesh.habittracker.repository;
 
+import com.chakreesh.habittracker.entity.Habit;
 import com.chakreesh.habittracker.entity.HabitLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,9 +13,7 @@ import java.util.Optional;
 public interface HabitLogRepository extends JpaRepository<HabitLog, Long> {
 
     List<HabitLog> findByHabitIdOrderByLoggedAtAsc(Long habitId);
-
-    List<HabitLog> findByHabitIdOrderByLoggedAtDesc(Long habitId);
-
+    Optional<HabitLog> findTopByHabitOrderByLoggedAtDesc(Habit habit);
     Optional<HabitLog> findTopByHabitIdOrderByLoggedAtDesc(Long habitId);;
 
 }

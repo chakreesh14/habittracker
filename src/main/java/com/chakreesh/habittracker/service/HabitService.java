@@ -14,7 +14,8 @@ import java.util.*;
 
 @Service
 public class HabitService {
-
+    @Value("${habit.log.interval.minutes}")
+    private int logIntervalMinutes;
     private final HabitRepository habitRepository;
     private final HabitLogRepository habitLogRepository;
     private final AuthenticatedUserService authenticatedUserService;
@@ -63,7 +64,7 @@ public class HabitService {
 
         if (minutes < logIntervalMinutes) {
                 long remaining = logIntervalMinutes - minutes;
-                return "❌ Try again after " + remaining + " minutes";
+                return "Try again after " + remaining + " minutes";
             }
     }
 

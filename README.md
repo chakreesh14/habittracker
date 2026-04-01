@@ -19,7 +19,8 @@ Tech Stack:
 - Swagger UI
 
 Prerequisites:
-- Install Java 21
+- Install Java 21+
+https://adoptium.net/download?link=https%3A%2F%2Fgithub.com%2Fadoptium%2Ftemurin25-binaries%2Freleases%2Fdownload%2Fjdk-25.0.2%252B10%2FOpenJDK25U-jdk_x64_windows_hotspot_25.0.2_10.msi&vendor=Adoptium
 
 Check installation:
 java -version

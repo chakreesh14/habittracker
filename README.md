@@ -27,12 +27,15 @@ java -version
 Note:
 Maven is not required. This project uses Maven Wrapper.
 
+If you face any issue with the Maven Wrapper, please install maven 3 from below link
+https://dlcdn.apache.org/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.zip
+
 Project Setup:
 1. Clone the repository:
 git clone <your-repo-url>
 cd demo
 
-(Optional) 2. Configure application.properties:
+(Optional Use it if you want to use other than SQL Lite) 2. Configure application.properties:
 Path: src/main/resources/application.properties
 
 Add:
@@ -47,6 +50,9 @@ Run the Application:
 
 Windows:
 mvnw.cmd spring-boot:run
+
+Note : If you face any issue with Maven wrapper
+mvn spring-boot:run 
 
 Mac/Linux:
 ./mvnw spring-boot:run
